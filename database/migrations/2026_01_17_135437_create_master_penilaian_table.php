@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mapels', function (Blueprint $table) {
+        Schema::create('master_penilaian', function (Blueprint $table) {
             $table->id();
+            $table->string('jenis');
+            $table->integer('nilai_min');
+            $table->integer('nilai_max');
+            $table->foreignId('mapel_id')->constrained('mapel')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mapels');
+        Schema::dropIfExists('master_penilaian');
     }
 };

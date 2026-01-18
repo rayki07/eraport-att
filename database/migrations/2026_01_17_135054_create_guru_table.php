@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kelas', function (Blueprint $table) {
+        Schema::create('guru', function (Blueprint $table) {
             $table->id();
-            $table->integer('rombel');
-            $table->string('nama_kelas');
-            $table->foreignId('walikelas_id')->nullable()->constrained('guru')->nullOnDelete();
-            $table->boolean('is_active')->default(true);
+            $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->restrictOnDelete();
+            $table->string('nip')->nullable()->unique();
+            $table->string('nama_lengkap');
+            $table->string('gelar')->nullable();
+            $table->enum('jenis_kelamin', ['L', 'P']);
+            $table->string('foto')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kelas');
+        Schema::dropIfExists('guru');
     }
 };
