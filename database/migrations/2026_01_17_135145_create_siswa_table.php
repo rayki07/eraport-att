@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nis')->unique()->nullable();
             $table->string('nisn')->unique()->nullable();
-            $table->string('nama');
+            $table->string('nama_lengkap');
             $table->string('nama_panggilan')->nullable();
             $table->enum('jenis_kelamin', ['L', 'P']);
             $table->enum('status', ['aktif', 'lulus', 'pindah'])->default('aktif');
