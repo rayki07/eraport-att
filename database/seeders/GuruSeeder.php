@@ -27,7 +27,7 @@ class GuruSeeder extends Seeder
 
         $firman->assignRole(['admin', 'guru_att']);
 
-        /* Guru::firstOrCreate(
+        Guru::firstOrCreate(
             ['user_id' => $firman->id],
             [
                 'nama_lengkap'  => 'Firman Wahyudi',
@@ -35,10 +35,10 @@ class GuruSeeder extends Seeder
             ]
         );
 
-        // wali kelas
+       // wali kelas
 
         $dina = User::firstOrCreate(
-            ['email => dina@eraport.test'],
+            ['email' => 'dina@eraport.test'],
             [
                 'name'      => 'Dina',
                 'password'  => Hash::make('password'),
@@ -53,6 +53,6 @@ class GuruSeeder extends Seeder
                 'nama_lengkap'  => 'Dina',
                 'jenis_kelamin' => 'P'
             ]
-        ); */
+        );
     }
 }

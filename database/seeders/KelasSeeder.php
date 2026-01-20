@@ -17,12 +17,13 @@ class KelasSeeder extends Seeder
     {
         $walikelas = Guru::where('nama_lengkap', 'Dina')->first();
         $tahunAjaranAktif = TahunAjaran::where('is_active', true)->first();
+        $tahunAjaran = TahunAjaran::all();
 
         if (!$walikelas || !$tahunAjaranAktif) {
             return;
         }
 
-        Kelas::firstOrCreate(
+        /* Kelas::firstOrCreate(
             [
                 'nama_kelas'    => 'Bahrain',
             ],
@@ -31,6 +32,15 @@ class KelasSeeder extends Seeder
                 'walikelas_id'   => $walikelas->id,
                 'is_active'       => true,
             ]
-        );
+        ); */
+
+        foreach ($tahunAjaran as $tahun){
+            Kelas::create([
+                'rombel'        => $tahun->id,
+                'nama_kelas'    => 'Bahrain',
+                'walikelas_id'  => $walikelas->id,
+                'is_active'     => $tahun->is_active,
+            ]);
+        }
     }
 }

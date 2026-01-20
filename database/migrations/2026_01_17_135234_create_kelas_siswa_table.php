@@ -16,10 +16,9 @@ return new class extends Migration
             $table->foreignId('siswa_id')->constrained('siswa')->onDelete('cascade');
             $table->foreignId('kelas_id')->constrained('kelas')->onDelete('cascade');
             $table->foreignId('tahun_ajaran_id')->constrained('tahun_ajaran')->onDelete('cascade');
-            $table->foreignId('semester_id')->constrained('semester')->onDelete('cascade');
             $table->integer('no_absen')->nullable();
             $table->timestamps();
-            $table->unique(['siswa_id', 'kelas_id', 'tahun_ajaran_id', 'semester_id'], 'idx_kelas_unique');
+            $table->unique(['siswa_id', 'kelas_id', 'tahun_ajaran_id'], 'idx_kelas_unique');
         });
     }
 
