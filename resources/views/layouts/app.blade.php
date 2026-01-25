@@ -5,16 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Eraport-') }}</title>
+        <title>{{ config('app.name', 'Eraport-att') }}</title>
 
-        <!-- Fonts -->
+        {{-- Fonts --}}
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        <!-- Icons -->
+        {{-- Icons --}}
         <script src="https://unpkg.com/lucide@latest"></script>
 
-        <!-- Scripts -->
+        {{-- Scripts --}}
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <style>
@@ -58,7 +58,7 @@
     <body class="font-sans antialiased bg-gray-100 flex min-h-screen">
         
 
-            <!-- sidebar -->
+            {{-- sidebar --}}
             <x-sidebar />
 
             {{-- @include('layouts.navigation') --}}
@@ -83,7 +83,7 @@
                         </span>
 
                         {{-- User --}}
-                        <!-- Settings Dropdown -->
+                        {{-- Settings Dropdown --}}
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">
@@ -103,7 +103,7 @@
                                         {{ __('Profile') }}
                                     </x-dropdown-link>
 
-                                    <!-- Authentication -->
+                                    {{-- Authentication --}}
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
 
@@ -120,7 +120,7 @@
                     </div>
                 </header>
 
-                <!-- Header halaman (opsional) -->
+                {{-- Header halaman (opsional) --}}
                 {{-- @isset($header)
                     <header class="bg-white dark:bg-gray-800 shadow">
                         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -129,11 +129,11 @@
                     </header>
                 @endisset --}}
 
-                <!-- Page Content -->
+                {{-- Page Content --}}
                 <main>
                     <x-alert />
 
-                    <!--isi Halaman -->
+                    {{--isi Halaman --}}
                     {{ $slot }}
                 </main>
                 {{-- Footer --}}

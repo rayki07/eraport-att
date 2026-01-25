@@ -54,5 +54,25 @@ class GuruSeeder extends Seeder
                 'jenis_kelamin' => 'P'
             ]
         );
+
+        // wali kelas
+
+        $riki = User::firstOrCreate(
+            ['email' => 'riki@eraport.test'],
+            [
+                'name'      => 'Riki Rohmansyah',
+                'password'  => Hash::make('password'),
+            ]
+            );
+
+        $riki->assignRole(['guru_att']);
+
+        Guru::firstOrCreate(
+            ['user_id' => $riki->id],
+            [
+                'nama_lengkap'  => 'Riki',
+                'jenis_kelamin' => 'L'
+            ]
+        );
     }
 }

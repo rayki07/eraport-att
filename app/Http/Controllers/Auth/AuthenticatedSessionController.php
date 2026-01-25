@@ -28,6 +28,24 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // Logika pengalihan Route berdasarkan Role
+        $user = $request->user();
+
+        // Logika Pengalihan Berdasarkan Role
+        if ($user->hasRole('admin')) {
+            return redirect()->route('admin.dashboard'); // Mengarah ke routes/admin.php
+        }
+
+        if ($user->hasRole('guru_att')) {
+            return redirect()->route('guru_att.dashboard'); // Mengarah ke routes/guru.php
+        }
+
+        if ($user->hasRole('walikelas')) {
+            return redirect()->route('walikelas.dashboard'); // Mengarah ke routes/ortu.php
+        }
+
+    //-------
+
         return redirect()->intended(route('dashboard', absolute: false));
     }
 

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable
 {
@@ -51,5 +52,24 @@ class User extends Authenticatable
     public function guru()
     {
         return $this->hasOne(Guru::class);
+    }
+
+    // Membuat nama role lebih bagus
+    protected function roleLabel(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                // mengambil nama role
+                $roleName = $this->getRoleNames()->first();
+
+                return match ($roleName) {
+                    'admin'     => 'Administrator',
+                    'walikelas' => 'Walikelas',
+                    'guru_att'  => 'Guru ATT',
+                    null        => 'Tidak ada Jabatan',
+                    default     => ucwords(str_replace('_', ' ', $roleName)),
+                }; 
+            },
+        );
     }
 }
