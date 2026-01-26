@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
+            Pilih Siswa
         </h2>
     </x-slot>
 
@@ -10,24 +10,25 @@
         <div class="flex items-center justify-between border-b pb-4 mb-4">
             <div class="flex items-center space-x-2 text-gray-700">
                 <i data-lucide="users-2" class="w-6 h-6"></i>
-                <h2 class="text-xl font-semibold">Dashboard Wali Kelas</h2>
+                <h2 class="text-xl font-semibold">Pilih Siswa</h2>
             </div>              
         </div>
 
         {{-- Isi Halaman --}}
         <div class="overflow-x-auto rounded-lg border">
             
-            @if ($kelas)
-                <div class="bg-white p-4 rounded shadow">
-                    <p class="text-sm text-gray-500">Kelas</p>
-                    <p class="text-xl font-semibold">{{ $kelas->nama_kelas }}</p>
+            <h1 class="text-xl font-bold mb-4">Pilih Siswa</h1>
 
-                    <p class="mt-2 text-sm text-gray-500">Jumlah Siswa</p>
-                    <p class="text-2xl font-bold">{{ $jumlahSiswa }}</p>
-                </div>
-            @else
-                <p class="text-gray-500">Anda belum ditetapkan sebagai wali kelas.</p>
-            @endif
+            <ul class="bg-white rounded shadow divide-y">
+            @foreach ($siswa as $index =>$item)
+                <li class="p-3">
+                    <a href="{{ route('guru_att.nilai.form', [$kelasId, $item->id]) }}"
+                    class="text-blue-600 hover:underline">
+                        {{ $index + 1 }} {{ $item->siswa->nama_lengkap }}
+                    </a>
+                </li>
+            @endforeach
+            </ul>
             
         </div>
     </div>

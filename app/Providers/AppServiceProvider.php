@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use App\Models\Semester;
 use App\Models\TahunAjaran;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use App\Models\PengajarKelas;
 use Illuminate\Support\Facades\URL;
 use App\Models\Mapel;
 
@@ -44,9 +46,14 @@ class AppServiceProvider extends ServiceProvider
 
         // ----- Menampilkan daftar Mata Pelajaran ----
         View::composer('components.sidebar', function($view) {
+            $guruId = Auth::user()->guru->id;
+            $kelas = PengajarKelas::with('kelas')
+            ->where('guru_id', $guruId)
+            ->get();
+
             $mapel = Mapel::all();
 
-            $view->with('sidebar_mapel', $mapel);
+            $view->with('sidebar_kelas', $kelas);
         });
     }
 }

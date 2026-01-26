@@ -127,10 +127,10 @@
                 <p class="text-xs font-semibold uppercase text-gray-400 mb-2">Mata Pelajaran</p>
                 <div class="space-y-1">
 
-                    @foreach ($sidebar_mapel as $item)
+                    @foreach ($sidebar_kelas as $item)
                         <div href="/#" class="flex justify-between items-center py-1.5 px-2 text-sm text-gray-300 hover:bg-gray-700 rounded-lg">
-                            <a {{-- href="{{ route('mapel.index', $item->id) }}" --}}>
-                                <span class="truncate">{{ $item->nama_pelajaran }}</span>    
+                            <a href="{{ route('guru_att.nilai.siswa', $item->id) }}">
+                                <span class="truncate">{{ $item->kelas->rombel }} {{ $item->kelas->nama_kelas }}</span>    
                             </a>
                             <span class="text-xs bg-green-500 rounded-full px-2 py-0.5 font-bold">100%</span>
                         </div>

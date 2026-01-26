@@ -18,7 +18,7 @@ class PengajarKelasSeeder extends Seeder
      */
     public function run(): void
     {
-        $guru = Guru::where('nama_lengkap', 'Firman_wahyudi')->first();
+        $guru = Guru::where('nama_lengkap', 'Riki')->first();
         $kelas = Kelas::where('nama_kelas', 'Bahrain')->first();
         $tahunAjaran = TahunAjaran::where('is_active', true)->first();
         $semester = Semester::where('is_active', true)->first();

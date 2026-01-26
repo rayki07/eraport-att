@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('rombel');
             $table->string('nama_kelas');
             $table->foreignId('walikelas_id')->nullable()->constrained('guru')->nullOnDelete();
+            $table->foreignId('tahun_ajaran_id')->constrained('tahun_ajaran')->onDelete('cascade');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
             $table->softDeletes();

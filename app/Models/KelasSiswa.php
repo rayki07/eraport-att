@@ -19,5 +19,29 @@ class KelasSiswa extends Model
         'no_absen',
     ];
 
+    public function siswa()
+    {
+        return $this->belongsTo(Siswa::class, 'siswa_id');
+    }
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class, 'kelas_id');
+    }
+
+    public function tahunAjaran()
+    {
+        return $this->belongsTo(TahunAjaran::class, 'tahun_ajaran_id');
+    }
+
+    public function semester()
+    {
+        return $this->belongsTo(Semester::class, 'semester_id');
+    }
+
+       public function getGenderTextAttribute()
+    {
+        return $this->gender === 'L' ? 'Laki-laki' : 'Perempuan';
+    }
 
 }

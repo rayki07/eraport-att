@@ -17,6 +17,7 @@ class Kelas extends Model
         'rombel',
         'nama_kelas',
         'walikelas_id',
+        'tahun_ajaran_id',
         'is_active',
     ];
 
@@ -28,13 +29,18 @@ class Kelas extends Model
     public function siswa()
     {
         return $this->belongsToMany(Siswa::class, 'kelas_siswa')
-            ->withPivot('tahun_ajaran_id')
+            ->withPivot('siswa_id', 'tahun_ajaran_id')
             ->withTimestamps();
     }
 
     public function pengajara()
     {
         return $this->hasMany(PengajarKelas::class);
+    }
+
+    public function kelasSiswa()
+    {
+        return $this->hasMany(KelasSiswa::class, 'kelas_id');
     }
 
     

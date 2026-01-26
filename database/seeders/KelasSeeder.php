@@ -39,6 +39,7 @@ class KelasSeeder extends Seeder
                 'rombel'        => $tahun->id,
                 'nama_kelas'    => 'Bahrain',
                 'walikelas_id'  => $walikelas->id,
+                'tahun_ajaran_id' => $tahun->id,
                 'is_active'     => $tahun->is_active,
             ]);
         }

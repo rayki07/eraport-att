@@ -10,7 +10,7 @@ class PengajarKelas extends Model
     /** @use HasFactory<\Database\Factories\PengajarKelasFactory> */
     use HasFactory;
 
-    protected $table = 'pengajar kelas';
+    protected $table = 'pengajar_kelas';
 
     protected $fillable = [
         'guru_id',
