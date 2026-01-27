@@ -14,18 +14,12 @@ return new class extends Migration
         Schema::create('nilai_tahsin', function (Blueprint $table) {
             $table->id();
             $table->foreignId('nilai_att_id')->constrained('nilai_att')->onDelete('cascade');
-            $table->enum('jenis_mulai', ['iqra', 'tahsin', 'alquran'])->default('iqra');
-            $table->enum('jenis_selesai', ['iqra', 'tahsin', 'alquran'])->default('iqra');
-            $table->integer('jilid_mulai')->nullable();
-            $table->integer('jilid_selesai')->nullable();
-            $table->integer('halaman_mulai')->nullable();
-            $table->integer('halaman_selesai')->nullable();
-            $table->integer('juz_mulai')->nullable();
-            $table->integer('juz_selesai')->nullable();
-            $table->string('surah_mulai')->nullable();
-            $table->string('surah_selesai')->nullable();
-            $table->integer('ayat_mulai')->nullable();
-            $table->integer('ayat_selesai')->nullable();
+            $table->enum('jenis', ['iqra', 'tahsin', 'alquran'])->default('iqra');
+            $table->integer('jilid')->nullable();
+            $table->integer('halaman')->nullable();
+            $table->integer('juz')->nullable();
+            $table->string('surah')->nullable();
+            $table->integer('ayat')->nullable();
             $table->integer('nilai')->nullable();
             $table->text('catatan')->nullable();
             $table->unique('nilai_att_id'); //Supaya 1 raport ATT hanya punya 1 data tahsin & hafalan
